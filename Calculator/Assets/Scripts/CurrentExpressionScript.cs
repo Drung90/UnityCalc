@@ -24,7 +24,8 @@ public class CurrentExpressionScript : MonoBehaviour
             a = Convert.ToDouble(currentValue.text);
         }
         else
-        {            
+        {
+            Debug.Log("Enter b");
             b = Convert.ToDouble(currentValue.text);
         }
     }
