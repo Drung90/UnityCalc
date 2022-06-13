@@ -80,7 +80,7 @@ public class FunctionScript : MonoBehaviour
                 }
                 else if (string.IsNullOrEmpty(global.currentExpression.text) ^ global.currentExpression.text.EndsWith("="))
                 {
-                    global.nowB = true;
+                    
                     global.currentExpression.text = Convert.ToString(global.a) + operation;
                     global.a = Math.Sqrt(global.a);
                     global.currentValue.text = Convert.ToString(global.a);
@@ -106,7 +106,7 @@ public class FunctionScript : MonoBehaviour
                     global.b = Math.Sqrt(global.b);
                     global.currentValue.text = Convert.ToString(global.b);                    
                     global.memoryReset = true;
-                    global.a = global.b;
+                   // global.a = global.b;
                 }
                 break;
             case "^2":
@@ -117,7 +117,7 @@ public class FunctionScript : MonoBehaviour
                     global.a = Math.Pow(global.a, 2);
                     global.currentValue.text = Convert.ToString(global.a);                    
                     global.memoryReset = true;
-                    global.nowB = false;
+                    
                     global.b = global.a;
                     
                 }
@@ -128,7 +128,7 @@ public class FunctionScript : MonoBehaviour
                     global.b = Math.Pow(global.b, 2);
                     global.currentValue.text = Convert.ToString(global.b);                    
                     global.memoryReset = true;
-                    global.a = global.b;
+                    //global.a = global.b;
                 }
                 break;
             case "1/x":
