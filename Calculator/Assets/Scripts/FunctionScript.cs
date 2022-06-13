@@ -85,7 +85,7 @@ public class FunctionScript : MonoBehaviour
                     global.a = Math.Sqrt(global.a);
                     global.currentValue.text = Convert.ToString(global.a);
                     global.memoryReset = false;
-                    global.a = global.b;
+                    global.b = global.a;
 
                 }
                 else if (global.b < 0)
@@ -112,12 +112,14 @@ public class FunctionScript : MonoBehaviour
             case "^2":
                 if (string.IsNullOrEmpty(global.currentExpression.text) ^ global.currentExpression.text.EndsWith("="))
                 {
-                    global.nowB = true;
+                    
                     global.currentExpression.text = Convert.ToString(global.a) + operation;
                     global.a = Math.Pow(global.a, 2);
                     global.currentValue.text = Convert.ToString(global.a);                    
                     global.memoryReset = true;
-                    global.a = global.b;
+                    global.nowB = false;
+                    global.b = global.a;
+                    
                 }
                 else
                 {
