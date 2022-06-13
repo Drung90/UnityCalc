@@ -218,7 +218,7 @@ public class FunctionScript : MonoBehaviour
                     global.currentExpression.text = Convert.ToString(global.a) + global.saveButtonText + Convert.ToString(global.b) + operation;
                     Precalculation();
                     global.currentValue.text = Convert.ToString(global.a);
-                    global.nowB = true;
+                    global.nowB = false;
                     global.operationBlocker = true;
                     global.memoryReset = true;
                 }
