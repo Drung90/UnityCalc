@@ -146,8 +146,7 @@ public class FunctionScript : MonoBehaviour
                     global.a = 1 / global.a;
                     global.currentValue.text = Convert.ToString(global.a);
                     global.nowB = true;
-                    global.memoryReset = true;
-                    global.a = global.b;
+                    global.memoryReset = true;                    
                 }
                 else
                 {
