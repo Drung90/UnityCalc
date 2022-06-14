@@ -6,8 +6,8 @@ using System;
 
 public class CurrentExpressionScript : MonoBehaviour
 {
-    public bool nullText, nowB, operationBlocker, memoryReset;
-    public double a, b, memoryCell;
+    public bool nullText, nowB, operationBlocker, memoryReset, backSpaceBlock;
+    public double a, b, memoryCell, saveB;
     public Text currentExpression, currentValue;
     public string saveButtonText;
 
@@ -18,14 +18,13 @@ public class CurrentExpressionScript : MonoBehaviour
     }
     private void Update()
     {
-       
+
         if (!nowB)
-        {            
+        {
             a = Convert.ToDouble(currentValue.text);
         }
         else
         {
-            Debug.Log("Enter b");
             b = Convert.ToDouble(currentValue.text);
         }
     }

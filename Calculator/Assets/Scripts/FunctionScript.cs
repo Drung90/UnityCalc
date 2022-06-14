@@ -34,6 +34,7 @@ public class FunctionScript : MonoBehaviour
     public void Function()
     {
         operation = buttonText.text;
+
         switch (operation)
         {
             case "C":
@@ -45,6 +46,7 @@ public class FunctionScript : MonoBehaviour
                 global.b = 0;
                 global.nowB = false;
                 global.memoryReset = false;
+                global.backSpaceBlock = false;
                 break;
             case "CE":
                 if (global.currentExpression.text.EndsWith("="))
@@ -58,18 +60,20 @@ public class FunctionScript : MonoBehaviour
                     global.b = 0;
                     global.nowB = false;
                     global.memoryReset = false;
+                    global.backSpaceBlock = false;
                 }
                 else
                 {
                     global.currentValue.text = "0";
                     global.nullText = true;
                     global.memoryReset = false;
+                    global.backSpaceBlock = false;
                 }
                 break;
             case "^0.5":
                 if (global.a < 0)
                 {
-                    global.currentValue.text = "Неверное значение";
+                    global.currentValue.text = "Невозможно";
                     global.currentExpression.text = null;
                     global.nullText = true;
                     global.saveButtonText = null;
@@ -77,20 +81,23 @@ public class FunctionScript : MonoBehaviour
                     global.b = 0;
                     global.nowB = false;
                     global.memoryReset = false;
+                    global.backSpaceBlock = true;
                 }
                 else if (string.IsNullOrEmpty(global.currentExpression.text) ^ global.currentExpression.text.EndsWith("="))
                 {
-                    
+
                     global.currentExpression.text = Convert.ToString(global.a) + operation;
                     global.a = Math.Sqrt(global.a);
                     global.currentValue.text = Convert.ToString(global.a);
-                    global.memoryReset = false;
-                    global.b = global.a;
+                    global.memoryReset = true;
+                    global.saveButtonText = null;
+                    global.nowB = true;
+                    global.backSpaceBlock = true;
 
                 }
                 else if (global.b < 0)
                 {
-                    global.currentValue.text = "Неверное значение";
+                    global.currentValue.text = "Невевозможно";
                     global.currentExpression.text = null;
                     global.nullText = true;
                     global.saveButtonText = null;
@@ -98,49 +105,96 @@ public class FunctionScript : MonoBehaviour
                     global.b = 0;
                     global.nowB = false;
                     global.memoryReset = false;
+                    global.backSpaceBlock = true;
                 }
-                else
+                else if (global.saveButtonText == "+" ^ global.saveButtonText == "-" ^ global.saveButtonText == "*" ^ global.saveButtonText == "/")
                 {
                     global.nowB = true;
                     global.currentExpression.text = Convert.ToString(global.a) + global.saveButtonText + "(" + Convert.ToString(global.b) + ")" + operation;
                     global.b = Math.Sqrt(global.b);
-                    global.currentValue.text = Convert.ToString(global.b);                    
+                    global.currentValue.text = Convert.ToString(global.b);
                     global.memoryReset = true;
-                   // global.a = global.b;
+                    global.backSpaceBlock = true;
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(global.saveButtonText))
+                    {
+                        global.nowB = true;
+                        global.currentExpression.text = Convert.ToString(global.b) + operation;
+                        global.b = Math.Sqrt(global.b);
+                        global.currentValue.text = Convert.ToString(global.b);
+                        global.memoryReset = true;
+                        global.a = global.b;
+                        global.backSpaceBlock = true;
+                    }
+                    else
+                    {
+                        global.nowB = true;
+                        global.currentExpression.text = Convert.ToString(global.a) + global.saveButtonText + "(" + Convert.ToString(global.b) + ")" + operation;
+                        global.b = Math.Sqrt(global.b);
+                        global.currentValue.text = Convert.ToString(global.b);
+                        global.memoryReset = true;
+                        global.a = global.b;
+                    }
                 }
                 break;
             case "^2":
                 if (string.IsNullOrEmpty(global.currentExpression.text) ^ global.currentExpression.text.EndsWith("="))
                 {
-                    
+
                     global.currentExpression.text = Convert.ToString(global.a) + operation;
                     global.a = Math.Pow(global.a, 2);
-                    global.currentValue.text = Convert.ToString(global.a);                    
+                    global.currentValue.text = Convert.ToString(global.a);
                     global.memoryReset = true;
-                    
-                    global.b = global.a;
-                    
+                    global.saveButtonText = null;
+                    global.nowB = true; global.backSpaceBlock = true;
+
                 }
-                else
+                else if (global.saveButtonText == "+" ^ global.saveButtonText == "-" ^ global.saveButtonText == "*" ^ global.saveButtonText == "/")
                 {
                     global.nowB = true;
                     global.currentExpression.text = Convert.ToString(global.a) + global.saveButtonText + "(" + Convert.ToString(global.b) + ")" + operation;
                     global.b = Math.Pow(global.b, 2);
-                    global.currentValue.text = Convert.ToString(global.b);                    
+                    global.currentValue.text = Convert.ToString(global.b);
                     global.memoryReset = true;
-                    //global.a = global.b;
+                    global.backSpaceBlock = true;
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(global.saveButtonText))
+                    {
+                        global.nowB = true;
+                        global.currentExpression.text = Convert.ToString(global.b) + operation;
+                        global.b = Math.Pow(global.b, 2);
+                        global.currentValue.text = Convert.ToString(global.b);
+                        global.memoryReset = true;
+                        global.a = global.b;
+                        global.backSpaceBlock = true;
+                    }
+                    else
+                    {
+                        global.nowB = true;
+                        global.currentExpression.text = Convert.ToString(global.a) + global.saveButtonText + "(" + Convert.ToString(global.b) + ")" + operation;
+                        global.b = Math.Pow(global.b, 2);
+                        global.currentValue.text = Convert.ToString(global.b);
+                        global.memoryReset = true;
+                        global.a = global.b;
+                        global.backSpaceBlock = true;
+                    }
                 }
                 break;
             case "1/x":
                 if (global.currentValue.text == "0")
                 {
-                    global.currentValue.text = "Деление на ноль";
+                    global.currentValue.text = "Невозможно";
                     global.currentExpression.text = null;
                     global.nullText = true;
                     global.saveButtonText = null;
                     global.a = 0;
                     global.b = 0;
                     global.nowB = false;
+                    global.backSpaceBlock = true;
                 }
                 else if (string.IsNullOrEmpty(global.currentExpression.text) ^ global.currentExpression.text.EndsWith("="))
                 {
@@ -148,16 +202,27 @@ public class FunctionScript : MonoBehaviour
                     global.a = 1 / global.a;
                     global.currentValue.text = Convert.ToString(global.a);
                     global.nowB = true;
-                    global.memoryReset = true;                    
+                    global.memoryReset = true;
+                    global.backSpaceBlock = true;
                 }
-                else
+                else if (global.saveButtonText == "+" ^ global.saveButtonText == "-" ^ global.saveButtonText == "*" ^ global.saveButtonText == "/")
                 {
                     global.currentExpression.text = Convert.ToString(global.a) + global.saveButtonText + "1/" + "(" + Convert.ToString(global.b) + ")";
                     global.b = 1 / global.b;
                     global.currentValue.text = Convert.ToString(global.b);
                     global.nowB = true;
                     global.memoryReset = true;
+                    global.backSpaceBlock = true;
+                }
+                else
+                {
+                    global.currentExpression.text = "1/" + "(" + Convert.ToString(global.b) + ")";
+                    global.b = 1 / global.b;
+                    global.currentValue.text = Convert.ToString(global.b);
+                    global.nowB = true;
+                    global.memoryReset = true;
                     global.a = global.b;
+                    global.backSpaceBlock = true;
                 }
                 break;
             case "%":
@@ -170,6 +235,7 @@ public class FunctionScript : MonoBehaviour
                         global.currentValue.text = Convert.ToString(global.b);
                         global.currentExpression.text = Convert.ToString(global.a) + global.saveButtonText + Convert.ToString(global.b);
                         global.memoryReset = false;
+                        global.backSpaceBlock = true;
                         break;
                     case "/":
                     case "*":
@@ -178,86 +244,121 @@ public class FunctionScript : MonoBehaviour
                         global.currentValue.text = Convert.ToString(global.b);
                         global.currentExpression.text = Convert.ToString(global.a) + global.saveButtonText + Convert.ToString(global.b);
                         global.memoryReset = false;
+                        global.backSpaceBlock = true;
                         break;
                 }
                 break;
             case "<=":
-                if (global.currentExpression.text.EndsWith("="))
+                if (!global.backSpaceBlock)
                 {
-                    global.currentExpression.text = null;
-                    global.nullText = true;
-                    global.saveButtonText = null;
-                    global.b = 0;
-                    global.nowB = false;
-                    global.operationBlocker = false;
-                    global.memoryReset = false;
-                }
-                else
-                {
-                    global.currentValue.text = global.currentValue.text.Remove(global.currentValue.text.Length - 1);
-                    global.memoryReset = false;
+                    if (global.currentExpression.text.EndsWith("="))
+                    {
+                        global.currentExpression.text = null;
+                        global.nullText = true;
+                        global.saveButtonText = null;
+                        global.b = 0;
+                        global.nowB = false;
+                        global.operationBlocker = false;
+                        global.memoryReset = false;
+                    }
+                    else
+                    {
+                        global.currentValue.text = global.currentValue.text.Remove(global.currentValue.text.Length - 1);
+                        global.memoryReset = false;
+                    }
                 }
                 break;
             case "+/-":
                 if (string.IsNullOrEmpty(global.currentExpression.text))
                 {
-                    global.a = global.a * -1;
+                    global.nowB = true;
+                    global.a = Convert.ToDouble(global.currentValue.text) * -1;
+                    global.b = 0;
                     global.currentValue.text = Convert.ToString(global.a);
-                    global.memoryReset = false;
+                    global.currentExpression.text = Convert.ToString(global.a);
+                    global.nullText = true;
+                }
+                else if (!global.currentExpression.text.EndsWith("=") && global.saveButtonText == "+" ^ global.saveButtonText == "-" ^ global.saveButtonText == "*" ^ global.saveButtonText == "/")
+                {
+                    if (global.nowB)//(string.IsNullOrEmpty(global.currentExpression.text) ^ global.currentExpression.text.EndsWith("="))
+                    {
+                        global.b = global.b * -1;
+                        global.currentValue.text = Convert.ToString(global.b);
+                        global.memoryReset = false;
+                    }
+                    else
+                    {
+                        global.a = global.a * -1;
+                        global.currentValue.text = Convert.ToString(global.a);
+                        global.memoryReset = false;
+                    }
                 }
                 else
                 {
-                    global.b = global.b * -1;
-                    global.currentValue.text = Convert.ToString(global.b);
+                    //global.nowB = false;
+                    global.a = Convert.ToDouble(global.currentValue.text) * -1;
+                    global.b = 0;
+                    global.currentValue.text = Convert.ToString(global.a);
+                    global.currentExpression.text = "negative (" + Convert.ToString(global.a) + ")";
+                    global.nullText = true;
                 }
                 break;
             case "=":
                 if (global.saveButtonText == "/" & global.b == 0)
                 {
-                    global.currentValue.text = "Деление на ноль";
+                    global.currentValue.text = "Невозможно";
                     global.currentExpression.text = default;
                     global.nullText = true;
                     global.saveButtonText = null;
                     global.a = 0;
                     global.b = 0;
                     global.nowB = false;
+                    global.memoryReset = true;
+                    global.backSpaceBlock = true;
                 }
                 else if (global.b == 0)//необхідно для корректного відображення при нульовому значенні b
                 {
                     global.currentExpression.text = Convert.ToString(global.a) + operation;
                     global.memoryReset = true;
+                    global.backSpaceBlock = true;
                 }
                 else
                 {
-                    global.currentExpression.text = Convert.ToString(global.a) + global.saveButtonText + Convert.ToString(global.b) + operation;
-                    Precalculation();
-                    global.currentValue.text = Convert.ToString(global.a);
-                    global.nowB = false;
-                    global.operationBlocker = true;
-                    global.memoryReset = true;
+                    if (global.currentExpression.text.EndsWith("="))
+                    {
+                        global.b = global.saveB;
+                        global.nowB = true;
+                        global.currentExpression.text = Convert.ToString(global.a) + global.saveButtonText + Convert.ToString(global.b) + operation;
+                        Precalculation();
+                        global.currentValue.text = Convert.ToString(global.a);
+                        global.operationBlocker = true;
+                        global.memoryReset = true;
+                        global.backSpaceBlock = true;
+                    }
+                    else
+                    {
+                        global.saveB = global.b;
+                        global.currentExpression.text = Convert.ToString(global.a) + global.saveButtonText + Convert.ToString(global.b) + operation;
+                        Precalculation();
+                        global.nowB = true;
+                        global.currentValue.text = Convert.ToString(global.a);
+                        global.operationBlocker = true;
+                        global.memoryReset = true;
+                        global.backSpaceBlock = true;
+                    }
                 }
                 break;
             default:
-                if (global.saveButtonText == "/" & global.b == 0)
-                {
-                    global.currentValue.text = "Деление на ноль";
-                    global.currentExpression.text = default;
-                    global.nullText = true;
-                    global.saveButtonText = null;
-                    global.a = 0;
-                    global.b = 0;
-                    global.nowB = false;
-                }
-                else if (!global.operationBlocker)
+                if (!global.operationBlocker)
                 {
                     global.operationBlocker = true;
                     global.nowB = true;
                     Precalculation();
                     global.currentExpression.text = Convert.ToString(global.a) + operation;
-                    global.currentValue.text = Convert.ToString(global.a);
                     global.nullText = true;
                     global.saveButtonText = operation;
                     global.memoryReset = false;
+                    global.backSpaceBlock = false;
                 }
                 else//дозволяє переключати математичні операції до ввода другого числа
                 {
@@ -265,6 +366,7 @@ public class FunctionScript : MonoBehaviour
                     global.currentExpression.text = Convert.ToString(global.a) + operation;
                     global.saveButtonText = operation;
                     global.memoryReset = false;
+                    global.backSpaceBlock = false;
                 }
                 break;
         }

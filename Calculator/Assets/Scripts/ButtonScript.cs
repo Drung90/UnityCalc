@@ -13,6 +13,7 @@ public class ButtonScript : MonoBehaviour
     public void WriteSymbol()
     {
         global.operationBlocker = false;
+        global.backSpaceBlock = false;
         if (global.nullText)
         {
             currentValue.text = null;
