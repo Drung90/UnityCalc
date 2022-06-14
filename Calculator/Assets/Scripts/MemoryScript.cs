@@ -7,8 +7,7 @@ using System;
 public class MemoryScript : MonoBehaviour
 {
     public Text ButtonText;
-    public CurrentExpressionScript global;
-    //string operation;
+    public CurrentExpressionScript global;  
 
     public void MemoryFunction()
     {

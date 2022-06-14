@@ -8,8 +8,6 @@ public class ButtonScript : MonoBehaviour
     public Text currentValue;
     public Text buttonText;
     public CurrentExpressionScript global;
-
-
     public void WriteSymbol()
     {
         global.operationBlocker = false;
@@ -33,6 +31,4 @@ public class ButtonScript : MonoBehaviour
         if (currentValue.text.Length < 8)
             currentValue.text += buttonText.text;
     }
-
-
 }

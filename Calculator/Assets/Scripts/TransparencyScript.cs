@@ -31,7 +31,4 @@ public class TransparencyScript : MonoBehaviour, IPointerUpHandler, IPointerDown
             transpartncy.a = 1f;
         }
     }
-
-
-
 }

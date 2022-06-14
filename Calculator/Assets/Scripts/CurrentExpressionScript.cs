@@ -10,7 +10,6 @@ public class CurrentExpressionScript : MonoBehaviour
     public double a, b, memoryCell, saveB;
     public Text currentExpression, currentValue;
     public string saveButtonText;
-
     private void Start()
     {
         currentValue.text = "0";
@@ -18,7 +17,6 @@ public class CurrentExpressionScript : MonoBehaviour
     }
     private void Update()
     {
-
         if (!nowB)
         {
             a = Convert.ToDouble(currentValue.text);
@@ -28,9 +26,4 @@ public class CurrentExpressionScript : MonoBehaviour
             b = Convert.ToDouble(currentValue.text);
         }
     }
-
-
-
-
-
 }

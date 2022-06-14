@@ -280,7 +280,7 @@ public class FunctionScript : MonoBehaviour
                 }
                 else if (!global.currentExpression.text.EndsWith("=") && global.saveButtonText == "+" ^ global.saveButtonText == "-" ^ global.saveButtonText == "*" ^ global.saveButtonText == "/")
                 {
-                    if (global.nowB)//(string.IsNullOrEmpty(global.currentExpression.text) ^ global.currentExpression.text.EndsWith("="))
+                    if (global.nowB)
                     {
                         global.b = global.b * -1;
                         global.currentValue.text = Convert.ToString(global.b);
@@ -294,8 +294,7 @@ public class FunctionScript : MonoBehaviour
                     }
                 }
                 else
-                {
-                    //global.nowB = false;
+                {                    
                     global.a = Convert.ToDouble(global.currentValue.text) * -1;
                     global.b = 0;
                     global.currentValue.text = Convert.ToString(global.a);
