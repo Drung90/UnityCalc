@@ -73,8 +73,8 @@ public class FunctionScript : MonoBehaviour
             case "^0.5":
                 if (global.a < 0)
                 {
-                    global.currentValue.text = "Невозможно";
-                    global.currentExpression.text = null;
+                    global.currentValue.text = null;
+                    global.currentExpression.text = "Неверный ввод";
                     global.nullText = true;
                     global.saveButtonText = null;
                     global.a = 0;
@@ -97,15 +97,15 @@ public class FunctionScript : MonoBehaviour
                 }
                 else if (global.b < 0)
                 {
-                    global.currentValue.text = "Невевозможно";
-                    global.currentExpression.text = null;
+                    global.currentValue.text = null;
+                    global.currentExpression.text = "Неверный ввод";
                     global.nullText = true;
                     global.saveButtonText = null;
                     global.a = 0;
                     global.b = 0;
                     global.nowB = false;
                     global.memoryReset = false;
-                    global.backSpaceBlock = true;
+                    global.backSpaceBlock = true;                    
                 }
                 else if (global.saveButtonText == "+" ^ global.saveButtonText == "-" ^ global.saveButtonText == "*" ^ global.saveButtonText == "/")
                 {
@@ -187,8 +187,8 @@ public class FunctionScript : MonoBehaviour
             case "1/x":
                 if (global.currentValue.text == "0")
                 {
-                    global.currentValue.text = "Невозможно";
-                    global.currentExpression.text = null;
+                    global.currentValue.text = null;
+                    global.currentExpression.text = "Деление на ноль";
                     global.nullText = true;
                     global.saveButtonText = null;
                     global.a = 0;
@@ -305,8 +305,8 @@ public class FunctionScript : MonoBehaviour
             case "=":
                 if (global.saveButtonText == "/" & global.b == 0)
                 {
-                    global.currentValue.text = "Невозможно";
-                    global.currentExpression.text = default;
+                    global.currentValue.text = null;
+                    global.currentExpression.text = "Деление на ноль";
                     global.nullText = true;
                     global.saveButtonText = null;
                     global.a = 0;
