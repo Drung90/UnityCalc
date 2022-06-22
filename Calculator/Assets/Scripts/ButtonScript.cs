@@ -31,4 +31,15 @@ public class ButtonScript : MonoBehaviour
         if (currentValue.text.Length < 8)
             currentValue.text += buttonText.text;
     }
+
+    public void Comma()
+    {
+        if (!global.currentValue.text.Contains(","))
+        {
+            currentValue.text += buttonText.text;
+            global.nullText = false;
+        }
+            
+    }
+
 }

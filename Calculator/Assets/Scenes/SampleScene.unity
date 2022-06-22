@@ -245,6 +245,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 183791500}
     m_Modifications:
+    - target: {fileID: 1330970059187528118, guid: d8dfb758427c59a43b6ebbb4f702c694, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Clean
+      objectReference: {fileID: 0}
     - target: {fileID: 1504752489524834213, guid: d8dfb758427c59a43b6ebbb4f702c694, type: 3}
       propertyPath: m_Text
       value: C
@@ -367,6 +371,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 183791500}
     m_Modifications:
+    - target: {fileID: 1330970059187528118, guid: d8dfb758427c59a43b6ebbb4f702c694, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Backspace
+      objectReference: {fileID: 0}
     - target: {fileID: 1504752489524834213, guid: d8dfb758427c59a43b6ebbb4f702c694, type: 3}
       propertyPath: m_Text
       value: <=
@@ -959,6 +967,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 183791500}
     m_Modifications:
+    - target: {fileID: 1330970059187528118, guid: d8dfb758427c59a43b6ebbb4f702c694, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: CleanEntry
+      objectReference: {fileID: 0}
     - target: {fileID: 1504752489524834213, guid: d8dfb758427c59a43b6ebbb4f702c694, type: 3}
       propertyPath: m_Text
       value: CE
@@ -1475,6 +1487,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 183791500}
     m_Modifications:
+    - target: {fileID: 1330970059187528118, guid: d8dfb758427c59a43b6ebbb4f702c694, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Reverse
+      objectReference: {fileID: 0}
     - target: {fileID: 1504752489524834213, guid: d8dfb758427c59a43b6ebbb4f702c694, type: 3}
       propertyPath: m_Text
       value: +/-
@@ -1813,6 +1829,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 183791500}
     m_Modifications:
+    - target: {fileID: 1330970059187528118, guid: d8dfb758427c59a43b6ebbb4f702c694, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PartOfOne
+      objectReference: {fileID: 0}
     - target: {fileID: 1504752489524834213, guid: d8dfb758427c59a43b6ebbb4f702c694, type: 3}
       propertyPath: m_Text
       value: 1/x
@@ -2023,6 +2043,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 183791500}
     m_Modifications:
+    - target: {fileID: 1330970059187528118, guid: d8dfb758427c59a43b6ebbb4f702c694, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SquareRoot
+      objectReference: {fileID: 0}
     - target: {fileID: 1504752489524834213, guid: d8dfb758427c59a43b6ebbb4f702c694, type: 3}
       propertyPath: m_Text
       value: ^0.5
@@ -2788,6 +2812,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 183791500}
     m_Modifications:
+    - target: {fileID: 1330970059187528118, guid: d8dfb758427c59a43b6ebbb4f702c694, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Pow
+      objectReference: {fileID: 0}
     - target: {fileID: 1504752489524834213, guid: d8dfb758427c59a43b6ebbb4f702c694, type: 3}
       propertyPath: m_Text
       value: ^2
@@ -3794,6 +3822,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 183791500}
     m_Modifications:
+    - target: {fileID: 1330970059187528118, guid: d8dfb758427c59a43b6ebbb4f702c694, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Percent
+      objectReference: {fileID: 0}
     - target: {fileID: 1504752489524834213, guid: d8dfb758427c59a43b6ebbb4f702c694, type: 3}
       propertyPath: m_Text
       value: '%'
@@ -4123,6 +4155,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 183791500}
     m_Modifications:
+    - target: {fileID: 1330970059187528118, guid: 2b4f3ebb24c404c44837978fe10c156e, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Comma
+      objectReference: {fileID: 0}
     - target: {fileID: 1504752489524834213, guid: 2b4f3ebb24c404c44837978fe10c156e, type: 3}
       propertyPath: m_Text
       value: ','

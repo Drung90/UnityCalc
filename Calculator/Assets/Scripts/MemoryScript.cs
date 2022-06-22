@@ -27,8 +27,7 @@ public class MemoryScript : MonoBehaviour
                     global.b = 0;
                     global.nowB = false;
                     global.currentValue.text = Convert.ToString(global.memoryCell);
-                    global.operationBlocker = false;
-                    
+                    global.operationBlocker = false;                    
                 }
                 global.currentValue.text = Convert.ToString(global.memoryCell);
                 break;
