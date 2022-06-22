@@ -44,7 +44,7 @@ public class FunctionScript : MonoBehaviour
                     Clean();
                     global.currentExpression.text = "Неможливо розділити на нуль";
                 }
-                else if (global.b == 0)//необхідно для корректного відображення при нульовому значенні b
+                else if (string.IsNullOrEmpty(global.currentExpression.text))//необхідно для корректного відображення при нульовому значенні b
                 {
                     global.currentExpression.text = Convert.ToString(global.a) + operation;
                     global.memoryReset = true;
@@ -57,15 +57,16 @@ public class FunctionScript : MonoBehaviour
                         global.b = global.saveB;
                         global.currentExpression.text = Convert.ToString(global.a) + global.saveButtonText + Convert.ToString(global.b) + operation;
                         Precalculation();
-                        global.nowB = true;
+                        //global.nowB = false;
                         global.currentValue.text = Convert.ToString(global.a);
+                        global.operationBlocker = true;
                     }
                     else
                     {
+                        //global.nowB = false;
                         global.saveB = global.b;
                         global.currentExpression.text = Convert.ToString(global.a) + global.saveButtonText + Convert.ToString(global.b) + operation;
                         Precalculation();
-                        global.nowB = true;
                         global.currentValue.text = Convert.ToString(global.a);
                         global.operationBlocker = true;
                         global.memoryReset = true;
@@ -129,7 +130,7 @@ public class FunctionScript : MonoBehaviour
             Clean();
             global.currentExpression.text = "Корінь від'ємного числа не існує";
         }
-        else if (global.b == 0 ^ global.currentExpression.text.EndsWith("="))
+        else if (string.IsNullOrEmpty(global.saveButtonText) ^ global.currentExpression.text.EndsWith("="))
         {
             global.currentExpression.text = Convert.ToString(global.a) + "^0.5";
             global.a = Math.Sqrt(global.a);
@@ -149,7 +150,7 @@ public class FunctionScript : MonoBehaviour
     }
     public void Pow()
     {
-        if (global.b == 0 ^ global.currentExpression.text.EndsWith("="))
+        if (string.IsNullOrEmpty(global.saveButtonText) ^ global.currentExpression.text.EndsWith("="))
         {
             global.currentExpression.text = Convert.ToString(global.a) + "^2";
             global.a = Math.Pow(global.a, 2);
@@ -169,14 +170,23 @@ public class FunctionScript : MonoBehaviour
     }
     public void Reverse()
     {
-        if (global.currentValue.text.Contains("-"))
-        {
-            global.currentValue.text = global.currentValue.text.TrimStart('-');
+        if (global.currentExpression.text.EndsWith("="))
+        {            
+            global.a = Convert.ToDouble(global.currentValue.text) * -1;
+            global.currentValue.text = Convert.ToString(global.a);
+            Debug.Log(global.a);
         }
         else
         {
-            global.currentValue.text = "-" + global.currentValue.text;
-        }
+            if (global.currentValue.text.Contains("-"))
+            {
+                global.currentValue.text = global.currentValue.text.TrimStart('-');
+            }
+            else
+            {
+                global.currentValue.text = "-" + global.currentValue.text;
+            }
+        }        
     }
     public void Backspace()
     {
@@ -206,12 +216,13 @@ public class FunctionScript : MonoBehaviour
             Clean();
             global.currentExpression.text = "Неможливо розділити на нуль";
         }
-        else if (global.b == 0 ^ global.currentExpression.text.EndsWith("="))
+        else if (string.IsNullOrEmpty(global.saveButtonText) ^ global.currentExpression.text.EndsWith("="))
         {
             global.currentExpression.text = "1/" + "(" + Convert.ToString(global.a) + ")";
             global.a = 1 / global.a;
             global.currentValue.text = Convert.ToString(global.a);
             global.memoryReset = true;
+            global.saveButtonText = null;
             global.backSpaceBlock = true;
         }
         else
