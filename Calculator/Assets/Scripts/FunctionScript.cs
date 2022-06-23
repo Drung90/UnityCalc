@@ -77,14 +77,22 @@ public class FunctionScript : MonoBehaviour
             default:
                 if (!global.operationBlocker)
                 {
-                    global.operationBlocker = true;
-                    global.nowB = true;
-                    Precalculation();
-                    global.currentExpression.text = Convert.ToString(global.a) + operation;
-                    global.nullText = true;
-                    global.saveButtonText = operation;
-                    global.memoryReset = false;
-                    global.backSpaceBlock = false;
+                    if (global.b == 0 & global.saveButtonText == "/")
+                    {                        
+                        Clean();
+                        global.currentExpression.text = "Неможливо розділити на нуль";
+                    }
+                    else
+                    {
+                        global.operationBlocker = true;
+                        global.nowB = true;
+                        Precalculation();
+                        global.currentExpression.text = Convert.ToString(global.a) + operation;
+                        global.nullText = true;
+                        global.saveButtonText = operation;
+                        global.memoryReset = false;
+                        global.backSpaceBlock = false;
+                    }
                 }
                 else//дозволяє переключати математичні операції до ввода другого числа
                 {
@@ -171,7 +179,7 @@ public class FunctionScript : MonoBehaviour
     public void Reverse()
     {
         if (global.currentExpression.text.EndsWith("="))
-        {            
+        {
             global.a = Convert.ToDouble(global.currentValue.text) * -1;
             global.currentValue.text = Convert.ToString(global.a);
             Debug.Log(global.a);
@@ -186,7 +194,7 @@ public class FunctionScript : MonoBehaviour
             {
                 global.currentValue.text = "-" + global.currentValue.text;
             }
-        }        
+        }
     }
     public void Backspace()
     {
@@ -260,6 +268,4 @@ public class FunctionScript : MonoBehaviour
                 break;
         }
     }
-
-
 }
