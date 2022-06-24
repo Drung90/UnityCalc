@@ -77,24 +77,17 @@ crashlytics-build.properties
 /[Ll]ibrary/ShaderCache/
 /[Ll]ibrary/StateCache/
 /[Ll]ibrary/TempArtifacts/
-AnnotationManager
-ArtifactDB
-ArtifactDB-lock
 BuildPlayer.prefs
 BuildSettings.asset
 EditorOnlyScriptingSettings.json
 EditorOnlyVirtualTextureState.json
 EditorSnapSettings.asset
-expandedItems
 InspectorExpandedItems.asset
 LastBuild.buildreport
 LibraryFormatVersion.txt
 MonoManager.asset
 SceneVisibilityState.asset
-ScriptMapper
 ShaderCache.db
-SourceAssetDB
-SourceAssetDB-lock
 SpriteAtlasDatabase.asset
 Style.catalog
 
